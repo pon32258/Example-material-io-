@@ -12,16 +12,21 @@
 
   <title>Materialize Sandbox</title>
   <style>
+    html,
+    body,
+    .block {
+      height: 100%
+    }
   </style>
 </head>
 
 <body>
-  <div>
-    <nav>
-      <div>
-        <div>
-          <a href="#">Blue</a>
-          <ul>
+  <div id="blue" class="block blue">
+    <nav class="pushpin-demo-nav" data-target="blue">
+      <div class="nav-wrapper light-blue">
+        <div class="container">
+          <a href="#" class="brand-logo">Blue</a>
+          <ul id="nav-mobile" class="right hide-on-med-and-down">
             <li>
               <a href="#!">Blue Link 1</a>
             </li>
@@ -37,41 +42,20 @@
     </nav>
   </div>
 
-  <div>
-    <nav>
-      <div>
-        <div>
-          <a href="#">Red</a>
-          <ul>
+  <div id="red" class="block red ligthen-1">
+    <nav class="pushpin-demo-nav" data-target="red">
+      <div class="nav-wrapper red">
+        <div class="container">
+          <a href="#" class="brand-logo">Blue</a>
+          <ul id="nav-mobile" class="right hide-on-med-and-down">
             <li>
-              <a href="#!">Red Link 1</a>
+              <a href="#!">RED Link 1</a>
             </li>
             <li>
-              <a href="#!">Red Link 2</a>
+              <a href="#!">RED Link 2</a>
             </li>
             <li>
-              <a href="#!">Red Link 3</a>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </nav>
-  </div>
-
-  <div>
-    <nav>
-      <div>
-        <div>
-          <a href="#">Green</a>
-          <ul>
-            <li>
-              <a href="#!">Green Link 1</a>
-            </li>
-            <li>
-              <a href="#!">Green Link 2</a>
-            </li>
-            <li>
-              <a href="#!">Green Link 3</a>
+              <a href="#!">RED Link 3</a>
             </li>
           </ul>
         </div>
@@ -79,6 +63,26 @@
     </nav>
   </div>
 
+  <div id="green" class="block green">
+    <nav class="pushpin-demo-nav" data-target="green">
+      <div class="nav-wrapper light-green">
+        <div class="container">
+          <a href="#" class="brand-logo">green</a>
+          <ul id="nav-mobile" class="right hide-on-med-and-down">
+            <li>
+              <a href="#!">green Link 1</a>
+            </li>
+            <li>
+              <a href="#!">green Link 2</a>
+            </li>
+            <li>
+              <a href="#!">green Link 3</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </div>
 
 
 
@@ -96,8 +100,20 @@
       });
 
       // JAVASCRIPT START HERE
+      $('.target').pushpin({
+        topL0,
+        bottom: 1000,
+        offset: 0
+      });
 
-
+      $('.pushpin-demo-nav').each(function () {
+        var $this = $(this);
+        var $target = $('#' + $(this).attr('data-target'));
+        $this.pushpin({
+          top: $target.offset().top,
+          bottom: $target.offset().top + $target.outerHeight() - $this.height()
+        });
+      });
 
     });
   </script>
